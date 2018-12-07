@@ -70,7 +70,7 @@ var funcName = url.parse(req.url).query.split('&')[0].split("=")[1] // 取到请
 ```
 
 ### 调试
-启动两个服务。一个单纯的web服务`node serverOrigin.js`，一个跨域请求的目标服务`node serverDest.js`。浏览器访问http://localhost:333/jsonpOrigin.html，打开开发者工具的console项。点击按钮页面上`get JSONP`按钮,console内输出跨域请求的数据。
+启动两个服务。一个单纯的web服务`node serverOrigin.js`，一个跨域请求的目标服务`node serverDest.js`。浏览器访问http://localhost:333/jsonpOrigin.html ，打开开发者工具的console项。点击按钮页面上`get JSONP`按钮,console内输出跨域请求的数据。
 
 ### 总结
 至此完整的jsonp流程理顺了下来，还有jquery ajax封装的jsonp。原理也是一样的。希望以后项目中用到时，自己能得心应手。get it！
