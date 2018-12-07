@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSONP实践</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>JSONP</h1>
+	<article>
+		<p>json：JavaScript Object Notation是一种轻量级的数据交换格式。</p>
+
+		<p>优点：轻量级，易读eval（）转化为实际的对象，传输阶段被压缩，易于机器解析和生成，支持多种语言</p>
+
+		<p>jsonp：Json with Padding是解决跨域问题而提出的一种方案。</p>
+
+		<p>原理：由于浏览器同源策略的影响，不允许跨域的请求。而script标签是一个特例，它的src属性可以访问跨域的js，利用这个特性，服务端不再返回json格式的数据，而是返回一段调用某个函数的js代码。在src中调用，达成跨域。</p>
+	</article>
+	<div>
+		<p>获取github的接口数据</p>
+	</div>
+	<button id="getJsonp">get JSONP</button>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+  //原生xhr演示跨域
+  /* (function(){
+    var xhr = null
+    if(window.XMLHttpRequest){
+      xhr = new XMLHttpRequest()
+    }
+    else if(window.ActiveXObject){
+      xhr = new ActiveXObject('Microsoft.XMLHTTP')
+    }
+    if(xhr != null){
+      xhr.open('GET','http://www.baidu.com',false)
+      xhr.send(null)
+      console.log(xhr.responseText)
+    }
+    else{
+    	alert('你的浏览器不支持XMLHttpRequest')
+    }
+  })() */
+
+  // jquery版演示跨域
+  /*(function () {
+  	$.ajax({
+  		url: 'http://www.baidu.com',
+  		type: 'GET',
+  		dataType: 'JSON',
+  		data: {},
+  	})
+  	.done(function(data) {
+  		console.log("success");
+  		console.log(data);
+  	})
+  	.fail(function() {
+  		console.log("error");
+  	})
+  	.always(function() {
+  		console.log("complete");
+  	});
+  	
+	})()*/
+	
+	function createScript(src) {
+		$("<script><\/script>").attr("src",src).appendTo("body")
+	}
+	$("#getJsonp").click(function(){
+		createScript("http://127.0.0.1:444/somejson?callback=jsonCallback");
+	});
+  function jsonCallback(json) {
+		console.log(json)
+	}
+</script>
+</html>
