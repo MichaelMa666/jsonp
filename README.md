@@ -1,5 +1,5 @@
-> 身在枯井中，坐观鸿雁过。国企车开的就是稳（man），多了不抱怨了，说事儿。
-> 记上次面试经历，谈到跨域，谈到jsonp。因为我们开车稳，所以从不跨域。对于没有实践过JSONP的我来说，要是能讲明白怎么回事，就算是挺能忽悠了。但是功力低微啊，结果就是关公门前耍大刀。
+> 国企车开的就是稳（màn），多了不抱怨了，说事儿。
+> 记上次面试经历，谈到跨域，谈到jsonp。因为我们开车稳，所以从不跨域。对于没有实践过jsonp的我来说，要是能讲明白怎么回事，就算是挺能忽悠了。但是功力低微啊，结果就是关公门前耍大刀，赶紧找个时间自己操作一把。
 
 ## 服务器环境
 
@@ -13,7 +13,7 @@ html + jquery.js
 
 json：JavaScript Object Notation是一种轻量级的数据交换格式。
 
-优点：轻量级，易读eval（）转化为实际的对象，传输阶段被压缩，易于机器解析和生成，支持多种语言。
+优点：轻量级，易读eval()转化为实际的对象，传输阶段被压缩，易于机器解析和生成，支持多种语言。
 
 jsonp：Json with Padding是解决跨域问题而提出的一种方案。
 
@@ -70,7 +70,7 @@ var funcName = url.parse(req.url).query.split('&')[0].split("=")[1] // 取到请
 ```
 
 ### 调试
-启动两个服务。一个单纯的web服务`node serverOrigin.js`，一个跨域请求的目标服务`node serverDest.js`。浏览器访问http://localhost:333/jsonpOrigin.html ，打开开发者工具的console项。点击按钮页面上`get JSONP`按钮,console内输出跨域请求的数据。
+启动两个服务。一个单纯的web服务`node serverOrigin.js`，一个跨域请求的目标服务`node serverDest.js`。浏览器访问http://localhost:333/jsonpOrigin.html ，打开开发者工具的console项。点击按钮页面上`get JSONP`按钮，console内输出跨域请求的数据。
 
 ### 总结
 至此完整的jsonp流程理顺了下来，还有jquery ajax封装的jsonp。原理也是一样的。希望以后项目中用到时，自己能得心应手。get it！
