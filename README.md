@@ -1,5 +1,5 @@
 > 国企车开的就是稳（màn），多了不抱怨了，说事儿。
-> 记上次面试经历，谈到跨域，谈到jsonp。因为我们开车稳，所以从不跨域。对于没有实践过jsonp的我来说，要是能讲明白怎么回事，就算是挺能忽悠了。但是功力低微啊，结果就是关公门前耍大刀，赶紧找个时间自己操作一把。
+> 记上次面试经历，谈到跨域，谈到jsonp。因为我们开车稳，所以从不跨域。对于没有实践过jsonp的我来说，要是能讲明白怎么回事，就算是挺能忽悠了。但是功力低微啊，结果就是关公门前耍大刀，我觉得网上的理论知识只能让人懂个大概。这东西不实际操作一下还是差点意思。
 
 ## 服务器环境
 
@@ -51,22 +51,23 @@ function jsonCallback(json) {
 ```
 var funcName = url.parse(req.url).query.split('&')[0].split("=")[1] // 取到请求传入的回调函数的名称
 	
-	var data = {
-		"name": "MichaelMa",
-		"age": 26,
-		"isChild": false
-	}
+var data = {
+	"name": "MichaelMa",
+	"age": 26,
+	"isChild": false
+}
 
-	switch (pathName){
-		case "/somejson":
-			res.writeHead(200, { 'content-type': 'text/plain' })
-			res.write(funcName + "(" + JSON.stringify(data) + ")") // 在返回内容中拼接出一个完整的函数调用,效果就是jsonCallback(data)。这行代码是关键。
-			break
-		default:
-			res.writeHead(404, { 'content-type': 'text/plain' })
-			res.write("请求错误")
-			break
-	}
+switch (pathName){
+	case "/somejson":
+		res.writeHead(200, { 'content-type': 'text/plain' })
+		res.write(funcName + "(" + JSON.stringify(data) + ")") // 在返回内容中拼接出一个完整的函数调用,效果就是jsonCallback(data)。这行代码是关键。
+		break
+	default:
+		res.writeHead(404, { 'content-type': 'text/plain' })
+		res.write("请求错误")
+		break
+}
+	
 ```
 
 ### 调试
